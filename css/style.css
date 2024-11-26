@@ -93,7 +93,7 @@ video {
 }
 .main-container {
     background-image: url('../img/bg.png');
-    height: 921px;
+    height: 774px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -366,12 +366,12 @@ video {
     height: 410px;
 }
 
- .bg2 {
+.bg2 {
     padding: 65px;
     background-image: url(../img/bg\ img.png);
     color: white;
     position: relative;
-    height: 450px;
+    background-size: cover;
 }
 
 .about {
@@ -421,7 +421,7 @@ video {
 .offer-2 p {
     font-size: 55px;
 }
-
+b
 .leaf img {
     margin-right: 20px;
 }
