@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Gabriela&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&display=swap');
+
+/*reset start */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+.main-container {
+    background-image: url('../img/bg.png');
+    height: 921px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.navbar .menu a {
+    margin: 0 10px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+.navbar .contact span {
+    display: flex;
+    font-size: 20px;
+    color: #000000;
+    justify-content: end;
+    margin-right: 50px;
+}
+.navbar .contact p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 50px;
+}
+.menu {
+    position: absolute;
+    right: 8px;
+    top: 96px;
+    font-size: 49px;
+    font-weight: bold;
+}
+.main-section {
+    width: 640px
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+.left-content h2 {
+    font-size: 43px;
+    text-align: center;
+}
+.left-content h1 {
+    font-size: 88px;
+    margin: 10px 0;
+}
+
+.left-content p {
+    font-size: 40px;
+    text-align: center;
+}
+.offer {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.offer p {
+    font-size: 26px;
+    margin-top: 20px;
+}
+
+.offer .highlight {
+    font-size: 24px;
+    color: #000;
+}
+
+.order-btn {
+    padding: 15px 60px;
+    background-color: #fcde00;
+    color: #000000;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 600;
+}
+.right-content img {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.content {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    background-image:url('img/Instagram.png');
+}
+
+.content h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+ .menu-items {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    position: relative;
+} 
+.order-btn2 {
+    margin-top: 42px;
+    padding: 10px 30px;
+    background-color: #ffe100;
+    color: #000000;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    margin-left: 100px;
+}
+.main-section2 h2 {
+    font-size: 46px;
+    text-align: center;
+}
+
+.main-section2 p {
+    text-align: center;
+    margin-top: 20px;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.main-section3 {
+    margin-top: 150px;
+}
+.main-section3 h2 {
+    font-size: 46px;
+    text-align: center;
+}
+.menu-items h3 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+.main-section3 h3 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px 
+}
+
+.main-section3 p {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 25px;
+    color: #2a2a2a;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+.main-section4 {
+    padding: 70px;
+}
+.popular-dishes {
+    display: flex;
+    gap: 30px;
+    
+}
+
+.right-set {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+.sing-up {
+    gap: 26px;
+    padding: 50px 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    width: 694px;
+}
+
+.sing-up input, .sing-up button {
+    width: 250px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.sing-up button {
+    background-color: #fdd835;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 22px 0px 30px;
+    font-size: 17px;
+}
+.sing-up button:hover {
+    background-color: #ffeb3b;
+}
+.main-section5 h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.main-section5 h2 {
+    font-size: 50px;
+}
+
+.main-section5 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fredericka-the-great-regular {
+    font-family: "Fredericka the Great", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+     
+  .line {
+    background-color: #e9e6a6;
+    width: 100%;
+    position: absolute;
+    top: 159px;
+    left: 0px;
+    height: 110px;
+    z-index: -1;
+}
+
+ .test {
+    display: flex;
+    justify-content: center;
+ }
+ .nuddle-plate-2 {
+    height: 350px;
+    margin-top: 30px;
+    width: 100%;
+ }
+
+ .spaghetti-2 {
+    height: 350px;
+    margin-top: 30px;
+    width: 100%;  
+ }
+
+ .pizza {
+    width: 100%;
+    height: 410px;
+}
+
+ .bg2 {
+    padding: 65px;
+    background-image: url(../img/bg\ img.png);
+    color: white;
+    position: relative;
+    height: 450px;
+}
+
+.about {
+    display: flex;
+     gap: 450px;
+}
+
+.address {
+    display: flex;
+    gap: 30px;
+}
+.Company {
+    margin-bottom: 60px;
+    margin-top: 200px;
+    
+}
+.social-media {
+    margin-bottom: 60px;
+    margin-top: 218px;
+    margin-left: 130px;
+}
+
+.pacifico-regular {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    align-items: end;
+}
+  
+  .phone img {
+    position: absolute;
+    right: 17px;
+    top: 26px;
+}
+
+.main-section2 {
+    margin-top: 106px;
+}
+
+.left-content h3 {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.offer-2 p {
+    font-size: 55px;
+}
+
+.leaf img {
+    margin-right: 20px;
+}
+.con {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left-set2 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.right-set2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 130px;
+    gap: 20px;
+}
