@@ -214,7 +214,7 @@ video {
  .menu-items {
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    /* padding: 30px; */
     position: relative;
 } 
 .order-btn2 {
@@ -456,11 +456,15 @@ b
     flex-direction: column;
     gap: 15px;
 }
+
+.iron {
+    width: 100%;
+}
 @media only screen and (max-width: 480px) {
     .main-container {
         background-image:  repeating-linear-gradient(190deg,#ffe100,#dfdda1);
         background-repeat: no-repeat;
-        width: auto;
+        width: 100%;
     }
     
     .main-section4 {
@@ -513,7 +517,7 @@ b
     }
 
     .left-content h1 {
-        font-size: 60px;
+        font-size: 55px;
         margin: 10px 0;
     }
 
@@ -527,7 +531,12 @@ b
         margin-right: 30px;
         font-size: 12px;
     }
-
+    .navbar .menu a {
+        color: #000000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 20px;
+    }
     .navbar .contact span {
         display: flex;
         color: #000000;
@@ -537,8 +546,6 @@ b
     }
 
     .menu {
-        position: absolute;
-        right: 30px;
         top: 96px;
         font-size: 49px;
         font-weight: bold;
@@ -547,6 +554,13 @@ b
     .main-section3 h2 {
         font-size: 30px;
         text-align: center;
+    }
+
+    .main-section2 p {
+        text-align: center;
+        margin-top: 20px;
+        line-height: 30px;
+        font-size: 20px;
     }
 
     .main-section3 {
@@ -596,21 +610,28 @@ b
         margin-top: 20px;
     }
     .line-4 p {
-        width: auto;
+        width: 100%;
     }
     .pizza {
         width: 100%;
-        height: 250px;
+        height: 170px;
     }
 
     .nuddle-plate-2 {
-        height: 250px;
+        height: 170px;
         margin-top: 30px;
         width: 100%;
     }
     .spaghetti-2 {
-        height: 250px;
+        height: 170px;
         margin-top: 30px;
+        width: 100%;
+    }
+    .line {
+        display: none;
+    }
+
+    .iron {
         width: 100%;
     }
 }
