@@ -449,6 +449,7 @@ b
 }
 .line-4 p {
     width: 400px;
+    text-align: center;
 }
 
 .dit {
@@ -633,5 +634,10 @@ b
 
     .iron {
         width: 100%;
+    }
+
+    .line-4 p {
+        width: auto;
+        text-align: center;
     }
 }
