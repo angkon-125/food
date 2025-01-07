@@ -640,4 +640,14 @@ b
         width: auto;
         text-align: center;
     }
+    .sing-up button {
+        background-color: #fdd835;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        padding: 22px 0px 30px;
+        font-size: 17px;
+        width: 100%;
+    }
 }
