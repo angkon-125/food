@@ -665,4 +665,11 @@ b
         font-size: 38px;
         text-align: center;
     }
+    
+    .left-content h3 {
+        font-size: 25px;
+        text-align: center;
+        font-weight: bold;
+    }
+    
 }
