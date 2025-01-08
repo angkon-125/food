@@ -550,6 +550,7 @@ b
         top: 96px;
         font-size: 49px;
         font-weight: bold;
+        right: 35px;
     }
  
     .main-section3 h2 {
@@ -612,6 +613,7 @@ b
         align-items: center;
         padding: 15px;
         position: relative;
+        gap: 10px;
     }
 
     .Company {
@@ -687,6 +689,12 @@ b
         font-size: 23px;
         font-weight: 600;
         margin-top: 30px;
+    }
+
+    .phone img {
+        position: absolute;
+        right: 8px;
+        top: 31px;
     }
     
 }
