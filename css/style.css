@@ -569,7 +569,7 @@ b
     }
 
     .main-section5 h2 {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     .sing-up {
@@ -649,5 +649,14 @@ b
         padding: 22px 0px 30px;
         font-size: 17px;
         width: 100%;
+    }
+
+    .main-section3 p {
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        font-size: 25px;
+        color: #2a2a2a;
+        width: 300px;
     }
 }
