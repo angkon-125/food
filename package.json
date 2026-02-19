@@ -1,0 +1,19 @@
+{
+    "name": "food-delivery-app",
+    "version": "1.0.0",
+    "description": "Complete Food Delivery Restaurant App",
+    "main": "backend/server.js",
+    "scripts": {
+        "start:backend": "node backend/server.js",
+        "start:frontend": "npx serve frontend/html",
+        "dev": "npx concurrently \"npm run start:backend\" \"npm run start:frontend\""
+    },
+    "dependencies": {
+        "cors": "^2.8.6",
+        "express": "^4.22.1"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "serve": "^14.2.5"
+    }
+}

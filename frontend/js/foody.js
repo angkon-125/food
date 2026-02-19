@@ -1,5 +1,7 @@
+const API_URL = 'http://localhost:5000';
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Sticky Navbar
+    // Sticky Navbar logic
     const navbar = document.querySelector('.navbar');
     const stickyOffset = navbar.offsetTop;
 
@@ -11,126 +13,141 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.navbar .menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: 'smooth'
-                });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Reservation form validation
-    const reservationForm = document.querySelector('.sing-up');
-    reservationForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const inputs = reservationForm.querySelectorAll('input');
-        let isValid = true;
-        
-        inputs.forEach(input => {
-            if (!input.value) {
-                isValid = false;
-                input.style.borderColor = 'red';
-            } else {
-                input.style.borderColor = '#ddd';
-            }
-        });
+    // Initialize Cart
+    let cart = [];
+    const cartModal = document.getElementById('cart-modal');
+    const cartToggle = document.getElementById('cart-toggle');
+    const closeModal = document.querySelector('.close-modal');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalAmount = document.getElementById('cart-total-amount');
+    const cartCount = document.getElementById('cart-count');
 
-        if (isValid) {
-            alert('Reservation submitted successfully!');
-            reservationForm.reset();
-        } else {
-            alert('Please fill in all fields.');
+    // Fetch Menu
+    const menuContainer = document.getElementById('menu-container');
+    const fetchMenu = async () => {
+        try {
+            const response = await fetch(`${API_URL}/menu`);
+            const menu = await response.json();
+            renderMenu(menu);
+        } catch (err) {
+            console.error('Error fetching menu:', err);
+            menuContainer.innerHTML = '<p class="error">Failed to load menu. Please try again later.</p>';
         }
-    });
+    };
 
-    // Image gallery carousel
-    const galleryImages = document.querySelectorAll('.gallery img');
-    let currentImageIndex = 0;
-
-    function showNextImage() {
-        galleryImages.forEach((img, index) => {
-            img.style.opacity = index === currentImageIndex ? '1' : '0.3';
-            img.style.transform = index === currentImageIndex ? 'scale(1)' : 'scale(0.8)';
+    const renderMenu = (items) => {
+        menuContainer.innerHTML = '';
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <img class="iron" src="img/${item.image}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p>${item.description}<br><strong>$${item.price.toFixed(2)}</strong></p>
+                <button class="order-btn2" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}">Order Now</button>
+            `;
+            menuContainer.appendChild(div);
         });
-        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-    }
 
-    if (galleryImages.length > 0) {
-        setInterval(showNextImage, 3000);
-        showNextImage();
-    }
-
-    // Mobile menu toggle
-    const menu = document.querySelector('.navbar .menu');
-    const menuToggle = document.createElement('div');
-    menuToggle.className = 'menu-toggle';
-    menuToggle.innerHTML = '☰';
-    document.querySelector('.navbar').prepend(menuToggle);
-
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active');
-        menuToggle.innerHTML = menu.classList.contains('active') ? '×' : '☰';
-    });
-
-    // Section reveal animation
-    const sections = document.querySelectorAll('.main-section, .main-section2, .main-section3, .main-section4, .main-section5, .main-section6');
-    
-    const revealSection = () => {
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (sectionTop < windowHeight * 0.8) {
-                section.classList.add('revealed');
-            }
+        // Add event listeners to new buttons
+        document.querySelectorAll('.order-btn2').forEach(btn => {
+            btn.addEventListener('click', () => addToCart(btn.dataset));
         });
     };
 
-    window.addEventListener('scroll', revealSection);
-    revealSection(); // Initial check
+    // Cart Logic
+    const addToCart = async (item) => {
+        try {
+            const response = await fetch(`${API_URL}/cart`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: item.name, price: parseFloat(item.price), date: new Date().toISOString() })
+            });
+            const data = await response.json();
+            cart = data.cart;
+            updateCartUI();
+            alert(`${item.name} added to cart!`);
+        } catch (err) {
+            console.error('Error adding to cart:', err);
+        }
+    };
 
-    // Menu item hover effects
-    const menuItems = document.querySelectorAll('.menu-items > div');
-    menuItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-10px)';
-            item.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+    const updateCartUI = () => {
+        cartCount.textContent = cart.length;
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price;
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <span>${item.name}</span>
+                <span>$${item.price.toFixed(2)}</span>
+            `;
+            cartItemsContainer.appendChild(div);
         });
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0)';
-            item.style.boxShadow = 'none';
-        });
+        cartTotalAmount.textContent = total.toFixed(2);
+    };
+
+    // Modal Toggling
+    cartToggle.addEventListener('click', () => {
+        cartModal.style.display = 'block';
     });
 
-    // Order button loading state and cart functionality
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    const orderButtons = document.querySelectorAll('.order-btn, .order-btn2');
-    orderButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const buttonText = button.textContent;
-            button.textContent = 'Adding...';
-            button.disabled = true;
-
-            setTimeout(() => {
-                button.textContent = buttonText;
-                button.disabled = false;
-                
-                const menuItem = e.target.closest('.menu-items > div');
-                const itemName = menuItem ? menuItem.querySelector('h3').textContent : 'General Order';
-                
-                cart.push({ name: itemName, price: 10.99 }); // Example price
-                localStorage.setItem('cart', JSON.stringify(cart));
-                
-                alert(`${itemName} added to cart! Total items: ${cart.length}`);
-            }, 1000);
-        });
+    closeModal.addEventListener('click', () => {
+        cartModal.style.display = 'none';
     });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === cartModal) cartModal.style.display = 'none';
+    });
+
+    // Checkout
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+        if (cart.length === 0) return alert('Your cart is empty!');
+        alert('Thank you for your order! This is a demo checkout.');
+        cart = [];
+        updateCartUI();
+        cartModal.style.display = 'none';
+    });
+
+    // Reservation Form
+    const resForm = document.getElementById('reservation-form');
+    resForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(resForm);
+        const resData = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch(`${API_URL}/reservation`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(resData)
+            });
+            if (response.ok) {
+                alert('Table booked successfully!');
+                resForm.reset();
+            }
+        } catch (err) {
+            console.error('Error booking table:', err);
+        }
+    });
+
+    // Initial LOAD
+    fetchMenu();
+    // Sync cart on load
+    fetch(`${API_URL}/cart`).then(res => res.json()).then(data => {
+        cart = data;
+        updateCartUI();
+    }).catch(console.error);
 });

@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="css/style.css">
     <link rel="website Icon" type="png"
-    href="img/Pizza Restaurant Logo Vector Design Images, Restaurant Logo, Cooking Logo, Organic Food Logo, Kitchen Logo PNG Image For Free Download.png">
+        href="img/Pizza Restaurant Logo Vector Design Images, Restaurant Logo, Cooking Logo, Organic Food Logo, Kitchen Logo PNG Image For Free Download.png">
     <style>
         /*reset start */
         /*reset end*/
@@ -55,38 +55,17 @@
                 </section>
             </div>
         </div>
-        <div class="main-section2">
+        <div class="main-section2" id="menu">
             <div class="con">
                 <div class="fredericka-the-great-regular">
                     <h2>CHOOSE & ENJOY</h2>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quod, cum explicabo sequi
-                    accusantium suscipit nulla facere,<br>
-                    perspiciatis dignissimos corporis repudiandae qui recusandae maiores. Enim porro expedita aut?.</p>
+                <p>Explore our curated selection of premium dishes, prepared with fresh ingredients and culinary
+                    expertise.</p>
             </div>
-            <div class="menu-items">
-                <div class="line"></div>
-                <div>
-                    <img class="iron" src="img/spaghetti.png" alt="Pasta">
-                    <h3>Lorem Ipsum Dolor</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur<br>
-                        adipisicing elit. Nesciunt<br></p>
-                    <button class="order-btn2">Order Now</button>
-                </div>
-                <div>
-                    <img class="iron" src="img/Bread.png" alt="Bruschetta">
-                    <h3>Lorem Ipsum Dolor</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur<br>
-                        adipisicing elit. Nesciunt<br></p>
-                    <button class="order-btn2">Order Now</button>
-                </div>
-                <div>
-                    <img class="iron" src="img/nuddle plate .png" alt="Salad">
-                    <h3>Lorem Ipsum Dolor</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur<br>
-                        adipisicing elit. Nesciunt<br></p>
-                    <button class="order-btn2">Order Now</button>
-                </div>
+            <div class="menu-items" id="menu-container">
+                <!-- Menu items will be loaded here dynamically -->
+                <div class="loader">Loading menu...</div>
             </div>
         </div>
 
@@ -95,8 +74,7 @@
             <div class="fredericka-the-great-regular">
                 <h2>UPCOMING EVENTS</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus minus placeat aliquam.<br>
-                Necessitatibus quod, reiciendis nulla amet molestiae at dignissimos nobis, voluptate <br></p>
+            <p>Join us for special theme nights, live music, and exclusive tasting events throughout the month.</p>
             <div class="gallery">
                 <img src="img/spaghetti 2.png" class="spaghetti-2">
                 <img src="img/pizza.png" class="pizza">
@@ -119,21 +97,45 @@
             </div>
         </div>
         <div class="con">
-            <div class="main-section5">
+            <div class="main-section5" id="reservation">
                 <h3>RESERVATION</h3>
                 <div class="fredericka-the-great-regular">
                     <h2>BOOK YOUR TABLE</h2>
                 </div>
-                <form class="sing-up">
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="date" placeholder="Date">
-                    <input type="time" placeholder="Time">
-                    <input type="number" placeholder="People">
+                <form class="sing-up" id="reservation-form">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="date" name="date" placeholder="Date" required>
+                    <input type="time" name="time" placeholder="Time" required>
+                    <input type="number" name="people" placeholder="People" required>
                     <button type="submit">FIND A TABLE</button>
                 </form>
             </div>
         </div>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="fredericka-the-great-regular">
+                    <h2>YOUR CART</h2>
+                </div>
+                <div id="cart-items">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-total">
+                    <h3>Total: $<span id="cart-total-amount">0.00</span></h3>
+                </div>
+                <button id="checkout-btn" class="order-btn">Checkout</button>
+            </div>
+        </div>
+
+        <!-- Floating Cart Button -->
+        <div id="cart-toggle" class="cart-floating-btn">
+            <img src="img/phone.png" alt="Cart" style="filter: invert(1);">
+            <span id="cart-count">0</span>
+        </div>
+
         <div class="main-section6">
             <div class="bg2">
                 <div class="con">
@@ -147,7 +149,7 @@
                                         doloremque harum ducimus nulla aliquam. Eligendi.</p>
                                 </div>
                             </div>
-                            
+
                             <div class="dit">
                                 <div class="address">
                                     <img src="img/Location Icon.png" alt="Location Icon">
@@ -170,7 +172,7 @@
                                 <a href="#"><img src="img/Twitter.png" alt="Twitter"></a>
                                 <a href="#"><img src="img/WhatsApp.png" alt="WhatsApp"></a>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
